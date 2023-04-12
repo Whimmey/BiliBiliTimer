@@ -1,0 +1,39 @@
+{
+    "name": "Bilibili video Timer",
+    "version": "0.1",
+    "manifest_version": 3,
+    "description": "Calculate the rest time of the videos.",
+    "icons": {
+        "16": "icons/timeline.png"
+    },
+    "action": {
+        "default_popup": "popup.html",
+        "default_icon": "icons/timeline.png"
+    },
+    "permissions": [
+        "activeTab",
+        "tabs"
+    ],
+    "content_scripts": [
+        {
+            "matches": [
+                "https://www.bilibili.com/video/*"
+            ],
+            "js": [
+                "./js/content.js",
+                "./js/calTime.js"
+            ]
+        }
+    ],
+    "options_page": "options.html",
+    "//": {
+        "note": "Json does not support comments, so this field is used to add comments.",
+        "permissions": [
+            "https://*/*",
+            "http://*/*"
+        ],
+        "matches": [
+            "*://*/*"
+        ]
+    }
+}
