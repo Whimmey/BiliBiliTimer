@@ -19,5 +19,21 @@
 ---
 
 ### v1.0.0 | 2023/4/13 
-✅ 基于JavaScript+BootStrap实现. 由于体量较小，没有引入jQuery编写
+✅ 基于JavaScript+BootStrap实现. 由于体量较小，没有引入jQuery编写 <br>
+✅ 支持手动输入视频区间，以及使用`range`控件拖拽选择
 
+```
+- manifest.json // 配置详细描述文件，包括权限等
+- popup.html // 扩展窗口
+- popup.js // 相应的js代码，绑定了扩展窗口各个组件的事件，以及和content.js通信的代码
+- options.html // 扩展选项设置
+- options.js // 相应的js代码
+--- css
+    - bootstrap.min.css // bootstrap
+--- js
+    - bootstrap.min.js // bootstrap
+    - calTime.js // 计算时长信息的代码
+    - content.js // content.js在网页打开加载阶段会被注入到页面中，因为需要获得视频分集的信息，另外还需要承担和扩展popup.js通信的功能，使得calTime.js的计算结果能被扩展接收到
+--- icons
+    - timeline.png // 扩展的图标
+```
