@@ -99,3 +99,4 @@ var manifest = chrome.runtime.getManifest();
 var version = manifest.version;
 // 将version显示在popup.html中
 document.getElementById('version').innerHTML = 'v' + version;
+document.getElementById('author').innerHTML = 'by wyy'
