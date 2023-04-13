@@ -11,7 +11,7 @@ endp.addEventListener('focus', function () { this.select() })
 var length = 1;
 // 初始化输入框的值
 chrome.tabs.query({ active: true, currentWindow: true }, tabs => {
-    // https://www.bilibili.com/video/BV1BP4y1q728/?p=16&vd_source=a51413ec652a69180aaca2bd70fa20f4
+    // https://www.bilibili.com/video/BVxxx/?p=16&vd_source=xxx
     let url = tabs[0].url;
     // 获取url中的p参数，正则表达式：p=数字
     let p = url.match(/p=(\d+)/);
@@ -35,14 +35,14 @@ chrome.tabs.query({ active: true, currentWindow: true }, tabs => {
 if (ranger) {
     ranger.addEventListener('input', function () {
         endp.value = parseInt(this.value);
+        // ranger的颜色随着值的变化而变化
+        // this.style.background = `linear-gradient(to right, #007bff 0%, #007bff ${this.value / this.max * 100}%, #dee2e6 ${this.value / this.max * 100}%, #dee2e6 100%);`;
     })
 }
 // 绑定cal按钮的click事件
 if (btn_cal) {
     btn_cal.addEventListener('click', function () {
         // 获取popup.html输入框的值，转换为int类型
-        // var p1 = parseInt(document.getElementsByTagName('input')[0].value);
-        // var p2 = parseInt(document.getElementsByTagName('input')[1].value);
         var p1 = parseInt(startp.value);
         var p2 = parseInt(endp.value);
 
@@ -78,7 +78,6 @@ if (btn_cal) {
             chrome.tabs.sendMessage(tabs[0].id, message).then(res => {
                 // alert("sendMessage!")
                 console.log(res);
-                // stime.innerText = `${res[0]}h ${res[1]}min ${res[2]}s`;
                 stime.value = `${res[0]}h ${res[1]}min ${res[2]}s`;
             }).catch(err => { console.error(err) });
         });
@@ -93,5 +92,10 @@ if (btn_del) {
     })
 }
 
-let mf = chrome.runtime.getURL('manifest.json');
-// alert(mf)
+// 获取版本号
+// 读取本地的manifest.json文件
+var manifest = chrome.runtime.getManifest();
+// 获取manifest.json中的version字段
+var version = manifest.version;
+// 将version显示在popup.html中
+document.getElementById('version').innerHTML = 'v' + version;

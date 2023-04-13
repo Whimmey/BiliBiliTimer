@@ -9,10 +9,6 @@
     <style>
         body {
             width: 300px;
-            /* 背景颜色白色半透明： */
-            background-color: rgba(255, 255, 255, 0.8);
-            /* font-size: 17px;
-            padding: 0 15px; */
         }
     </style>
 </head>
@@ -21,28 +17,31 @@
     <!-- <h3>计算视频区间所需时间</h3> -->
     <div class="card">
         <div class="card-header bg-gradient-light">
-            计算视频区间总时长
+            BiliBili Video Timer<small class="position-absolute end-0 me-3 fs-6 text-muted"><em style="font-size: 5px;"
+                    id="version">0.1</em></small>
         </div>
-        <div class="card-body">
-            <div class="input-group input-group-sm mb-3">
+        <div class="card-body py-3">
+            <div class="input-group input-group-sm mb-2">
                 <span class="input-group-text">From</span>
                 <input id="p_start" type="text" class="form-control" placeholder="视频序号" aria-label="Username">
                 <span class="input-group-text">to</span>
                 <input id="p_end" type="text" class="form-control" placeholder="视频序号" aria-label="Server">
             </div>
-            <div class="input-group input-group-sm mb-3">
-                <label for="customRange2" class="text-muted">滑动选择...</label>
+            <div class="input-group input-group-sm mb-2">
+                <label for="customRange2" class="text-muted fs-6" style="font-size: 14px !important;">滑动选择...</label>
                 <input type="range" class="custom-range d-block w-100" min="1" max="10" id="customRange2">
             </div>
             <div class="input-group input-group-sm mb-3">
                 <button id="btn-cal" class="btn btn-outline-danger rounded-pill" type="button"
-                    style="width: 48%;">计算</button>
-                <button id="btn-del" class="btn btn-outline-warning position-absolute rounded-pill" type="button"
-                    style="width: 48%; right: 0;">清除</button>
+                    style="width: 47%;">计算</button>
+                <button id="btn-del" class="btn btn-outline-warning position-absolute end-0 rounded-pill" type="button"
+                    style="width: 47%;">清除</button>
             </div>
-            <input id="showtime" class="form-control" type="text" placeholder="合计时长显示在这里(￣▽￣)\" readonly>
+            <div class="input-group-m" style="padding-bottom: 0px !important;">
+                <input id="showtime" class="form-control" type="text" placeholder="合计时长显示在这里(￣▽￣)\" readonly>
+            </div>
         </div>
-        <div class="card-footer text-muted font-weight-light text-right" style="font-size: 7px;">
+        <div class="card-footer text-muted user-select-none font-weight-light py-1" style="font-size: 6px !important;">
             此工具只能在Bilibili视频播放页使用
         </div>
     </div>
