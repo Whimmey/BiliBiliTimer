@@ -5,6 +5,8 @@
 
 ---
 ### 安装
+**本项目已经上架微软商店**. 点击右侧`About`中的<a href="https://microsoftedge.microsoft.com/addons/detail/bilibili-video-timer/kjginbekfcfdnfjhnophpcdjoojnfabn" target="_blank">microsoftedge链接</a>可直接跳转到免费安装.
+
 下载本代码，进入`扩展管理界面`，选择`加载解压缩的扩展`，`打开Bili-extension文件夹`，即可安装.
 
 也可以去`release`中下载最新版本的`crx`文件，进入`扩展管理界面`，将`crx`文件拖入即可安装.
