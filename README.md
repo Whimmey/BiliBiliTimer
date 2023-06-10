@@ -1,11 +1,13 @@
 ## Bilibili Video Timer
 本拓展用于在Bilibili视频播放页面计算分集视频区间内总时长.
 
-注意：仅可用于**Bilibili视频播放页面**(`https://www.bilibili.com/video/*`)，其他页面无效.
+注意：仅可用于**Bilibili视频播放页面-分集视频**(`https://www.bilibili.com/video/*`)
+
+*若要尝试用于**合集视频**，有兴趣可以try one try基于B站API的 **testAjax.html**中的js代码。为了保持插件的轻量化暂未将其引入插件，毕竟绝大多数学习视频属于分集视频。有需求呼声可以new一个issue*
 
 ---
 ### 安装
-**本项目已经上架微软商店**. 点击右侧`About`中的<a href="https://microsoftedge.microsoft.com/addons/detail/bilibili-video-timer/kjginbekfcfdnfjhnophpcdjoojnfabn" target="_blank">microsoftedge链接</a>可直接跳转到免费安装.
+<font color=orange>**本项目已经上架微软商店**</font>. 点击右侧`About`中的<a href="https://microsoftedge.microsoft.com/addons/detail/bilibili-video-timer/kjginbekfcfdnfjhnophpcdjoojnfabn" target="_blank">microsoftedge链接</a>可直接跳转到免费安装.
 
 下载本代码，进入`扩展管理界面`，选择`加载解压缩的扩展`，`打开Bili-extension文件夹`，即可安装.
 
@@ -14,9 +16,9 @@
 ### 使用
 在Bilibili视频播放页面，`点击扩展图标`，在弹出的页面中`输入想要查看的视频区间`，点击`计算`即可得到总时长. 
 
-第一个输入框的值默认为`当前视频序号`，第二个输入框的值默认为`当前视频序号+1`. 当`URL`中不存在`p=n`字段(也就是首次进入分集视频的`p1`界面)时，插件是不会自动填入当前视频序号的
+第一个输入框的值默认为`当前视频序号`，第二个输入框的值默认为`当前视频序号+1`. *当`URL`中不存在`p=n`字段(也就是首次进入分集视频的`p1`界面)时，插件是不会自动填入当前视频序号的*
 
-也可以使用`range`控件拖拽选择. 两个输入框的值**不分先后**.
+加入`range`控件用于拖拽选择. 两个输入框的值**不分先后**.
 
 ---
 
