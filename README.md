@@ -21,8 +21,9 @@
 加入`range`控件用于拖拽选择. 两个输入框的值**不分先后**.
 
 `progress`控件展示的是看过的视频总时长占全长的百分比.
+<br>
 
-<img src='./img/index.png' style="width:60%"> 
+<img src='./img/index.png' style="width:40%;margin:10px 0"> 
 
 ---
 
