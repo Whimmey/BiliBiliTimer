@@ -4,12 +4,13 @@ var stime = document.getElementById('showtime');
 var startp = document.getElementById('p_start');
 var endp = document.getElementById('p_end');
 var ranger = document.getElementById('customRange2');
+var progress = document.getElementById('prgs');
 
 startp.addEventListener('focus', function () { this.select() })
 endp.addEventListener('focus', function () { this.select() })
 
-var length = 1;
-// 初始化输入框的值
+var length = 1; // 视频长度
+// 初始化输入框的值 & progress
 chrome.tabs.query({ active: true, currentWindow: true }, tabs => {
     // https://www.bilibili.com/video/BVxxx/?p=16&vd_source=xxx
     let url = tabs[0].url;
@@ -22,15 +23,19 @@ chrome.tabs.query({ active: true, currentWindow: true }, tabs => {
         startp.value = p;
         endp.value = p + 1;
     }
-    // 获取视频总集数 便于设置range的max值
-    let message = { action: "GetLength" }
-    chrome.tabs.sendMessage(tabs[0].id, message).then(res => {
-        // console.log(res);
-        length = parseInt(res);
+
+    // 获取视频总集数和进度 设置range的max值
+    chrome.tabs.sendMessage(tabs[0].id, { action: "GetLengthandProgress", p_now: p }).then(res => {
+        length = parseInt(res[0]);
         ranger.max = length;
         ranger.value = endp.value;
-    }).catch(err => { console.error(err) });
+        let width = res[1]
+        progress.style.width = `${width}%`
+        progress.setAttribute('aria-valuenow', width)
+        document.getElementById('prgs_info').innerText = `当前进度...${width}%`
+    }).catch(err => { console.error(err) })
 });
+
 // 绑定range的input事件
 if (ranger) {
     ranger.addEventListener('input', function () {
@@ -71,13 +76,8 @@ if (btn_cal) {
 
         chrome.tabs.query({ active: true, currentWindow: true }, tabs => {
             var message = { p1: p1, p2: p2, action: "GetDuration" }
-            // chrome.tabs.sendMessage(tabs[0].id, message, res => {
-            //     alert("sendMessage!")
-            //     alert(res);
-            // });
             chrome.tabs.sendMessage(tabs[0].id, message).then(res => {
                 // alert("sendMessage!")
-                console.log(res);
                 stime.value = `${res[0]}h ${res[1]}min ${res[2]}s`;
             }).catch(err => { console.error(err) });
         });
@@ -92,11 +92,8 @@ if (btn_del) {
     })
 }
 
-// 获取版本号
-// 读取本地的manifest.json文件
+// Version info
 var manifest = chrome.runtime.getManifest();
-// 获取manifest.json中的version字段
 var version = manifest.version;
-// 将version显示在popup.html中
 document.getElementById('version').innerHTML = 'v' + version;
 document.getElementById('author').innerHTML = 'by wyy'

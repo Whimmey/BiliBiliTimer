@@ -1,6 +1,6 @@
 {
     "name": "Bilibili Video Timer",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "manifest_version": 3,
     "description": "Calculate the rest time of the videos.",
     "icons": {
