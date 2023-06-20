@@ -36,5 +36,6 @@
             "*://*/*"
         ]
     },
-    "update_url": "https://raw.githubusercontent.com/Whimmey/BiliBiliTimer/main/updates.xml"
+    "update_url": "https://raw.githubusercontent.com/Whimmey/BiliBiliTimer/main/updates.xml",
+    "author": "Whimmey"
 }
