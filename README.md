@@ -22,7 +22,7 @@
 - `progress`控件展示看过的视频总时长占全长的百分比.
 - ❗ 新增右键菜单功能，在视频选集区域 **鼠标右键**-**计算到此时长**，随后点击扩展图标即**自动填入**目标视频序号. <font color=teal>**默认开启**此功能，**默认获取到目标视频序号后会有通知**，均可在`扩展管理界面`中关闭.</font>
 
-<img src='./img/show.gif' style="width:60%;margin:10px 0"> 
+<img src='https://github.com/Whimmey/BiliBiliTimer/blob/main/img/show.gif' style="width:60%;margin:10px 0"> 
 
 #### 关于右键菜单使用
 - 为什么不能实现整个自动化？<br>
