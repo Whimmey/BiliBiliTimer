@@ -1,11 +1,10 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <gupdate xmlns='http://www.google.com/update2/response' protocol='2.0'>
   <app appid='dcbagjmaedkaknbkfboemdoalgikggda'>
-    <updatecheck codebase='https://github.com/Whimmey/BiliBiliTimer/raw/main/build/Bili-extension.crx' version="1.1.0" status='ok' />
+    <updatecheck codebase='https://github.com/Whimmey/BiliBiliTimer/raw/main/build/Bili-extension.crx' version="1.0.0" status='ok' />
     <!-- <updatecheck codebase='https://microsoftedge.microsoft.com/addons/detail/bilibili-video-timer/kjginbekfcfdnfjhnophpcdjoojnfabn' version="1.1.0" status='ok' /> -->
   </app>
 </gupdate>
-
 <!-- appid: 扩展 ID 基于公钥的哈希生成-->
 <!-- codebase: 扩展下载地址 -->
 <!-- version: 版本号 -->

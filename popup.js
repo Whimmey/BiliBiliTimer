@@ -23,7 +23,6 @@ chrome.tabs.query({ active: true, currentWindow: true }, tabs => {
         startp.value = p;
         endp.value = p + 1;
     }
-
     // 获取视频总集数和进度 设置range的max值
     chrome.tabs.sendMessage(tabs[0].id, { action: "GetLengthandProgress", p_now: p }).then(res => {
         length = parseInt(res[0]);
@@ -91,6 +90,19 @@ if (btn_del) {
         ranger.value = 1;
     })
 }
+
+// 在页面加载时，从存储中获取数据并将其写入粘贴板
+document.addEventListener('DOMContentLoaded', () => {
+    chrome.storage.local.get('clipboardData', result => {
+        var clipboardData = result.clipboardData;
+        if (clipboardData) {
+            // writeToClipboard(clipboardData);
+            endp.value = clipboardData;
+            chrome.storage.local.remove('clipboardData'); // 删除已写入粘贴板的数据
+            // btn_cal.click();
+        }
+    });
+});
 
 // Version info
 var manifest = chrome.runtime.getManifest();

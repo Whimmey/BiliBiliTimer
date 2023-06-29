@@ -10,14 +10,31 @@
 
 <body>
     <div class="position-absolute top-0 start-50 translate-middle-x mt-3">
-        <div class="card text-center" style="width: 18rem;">
+        <div class="card text-center" style="width: 39vh;">
             <div class="card-body">
-                <h5 class="card-title">Settings</h5>
-                <h6 class="card-subtitle mb-2 text-muted">好像没啥好设置的...</h6>
-                <p class="card-text text-left"></p>
-                <p class="card-text text-left">如果有Bug或者建议, <br>可以去下面的网址吱一声.</p>
-                <p class="card-text text-left text-muted">至于后续更新...可能有吧</p>
+                <h5 class="card-title">⚡ Settings ⚡</h5>
+                <hr>
+                <div class="form-check form-switch text-start">
+                    <input class="form-check-input me-4" type="checkbox" id="blockMenuItem">
+                    <label class="form-check-label" for="flexSwitchCheckChecked">❌ 关闭右键菜单选项
+                    </label>
+                </div>
+                <small class="text-muted"
+                    style="font-size: 6px;">开启后右键菜单便不会显示本拓展选项<br>(修改后插件将在1s内重启，请手动刷新网页以便使用)</small>
+                <hr>
+                <div class="form-check form-switch text-start">
+                    <input class="form-check-input me-4" type="checkbox" id="blockNotification">
+                    <label class="form-check-label" for="flexSwitchCheckChecked">❌ 关闭右键菜单通知
+                    </label>
+                </div>
+                <small class="text-muted" style="font-size: 6px;">开启后便不会显示Windows通知</small>
+                <hr>
+                <p class="card-text"></p>
+                <p class="card-text">如果有Bug或者建议, <br>可以去下面的网址吱一声.</p>
+                <p class="card-text text-muted">欢迎关注Github✨.</p>
                 <small class="me-3 fs-6 text-muted"><em style="font-size: 5px;" id="version">v0.1</em></small>
+                <a href="https://microsoftedge.microsoft.com/addons/detail/bilibili-video-timer/kjginbekfcfdnfjhnophpcdjoojnfabn"
+                    class="card-link" target="_blank">MS Store</a>
                 <a href="https://github.com/Whimmey/BiliBiliTimer" class="card-link" target="_blank">Github</a>
                 <a href="https://github.com/Whimmey/BiliBiliTimer/releases" class="card-link"
                     target="_blank">Release</a>

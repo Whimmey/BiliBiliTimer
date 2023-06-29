@@ -113,8 +113,21 @@ if (btn_del) {
     endp.value = null;
     ranger.value = 1;
   });
-} // Version info
+} // 在页面加载时，从存储中获取数据并将其写入粘贴板
 
+
+document.addEventListener('DOMContentLoaded', function () {
+  chrome.storage.local.get('clipboardData', function (result) {
+    var clipboardData = result.clipboardData;
+
+    if (clipboardData) {
+      // writeToClipboard(clipboardData);
+      endp.value = clipboardData;
+      chrome.storage.local.remove('clipboardData'); // 删除已写入粘贴板的数据
+      // btn_cal.click();
+    }
+  });
+}); // Version info
 
 var manifest = chrome.runtime.getManifest();
 var version = manifest.version;
