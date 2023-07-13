@@ -17,7 +17,7 @@ chrome.tabs.query({ active: true, currentWindow: true }, tabs => {
     // 获取url中的p参数，正则表达式：p=数字
     let p = url.match(/p=(\d+)/);
     // 获取p中的数字
-    p = p ? parseInt(p[1]) : null;
+    p = p ? parseInt(p[1]) : 0;
     // 初始化输入框的值
     if (p) {
         startp.value = p;
