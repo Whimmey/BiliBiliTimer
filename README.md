@@ -5,7 +5,17 @@
 
 *若要尝试用于**合集视频**，有兴趣可以try one try基于B站API的 **testAjax.html**中的js代码。为了保持插件的轻量化暂未将其引入插件，毕竟绝大多数学习视频属于分集视频。有需求呼声可以new一个issue*
 
+- [Bilibili Video Timer](#bilibili-video-timer)
+  - [安装](#安装)
+  - [使用](#使用)
+    - [关于右键菜单使用](#关于右键菜单使用)
+  - [v2.0.1 | 2023/8/4](#v201--202384)
+  - [✨v2.0.0 | 2023/6/29](#v200--2023629)
+  - [v1.1.0 | 2023/6/14](#v110--2023614)
+  - [v1.0.0 | 2023/4/13](#v100--2023413)
+
 ---
+
 ### 安装
 <font color=orange>**本项目已经上架微软商店**</font>. 点击右侧`About`中的<a href="https://microsoftedge.microsoft.com/addons/detail/bilibili-video-timer/kjginbekfcfdnfjhnophpcdjoojnfabn" target="_blank">microsoftedge链接</a>可直接跳转到免费安装.
 
@@ -45,6 +55,8 @@
 ### v1.0.0 | 2023/4/13 
 ✅ 基于JavaScript+BootStrap实现. 由于体量较小，没有引入jQuery编写 <br>
 ✅ 支持手动输入视频区间，以及使用`range`控件拖拽选择
+
+---
 
 ```markdown
 │  manifest.json // 配置详细描述文件，包括权限等
