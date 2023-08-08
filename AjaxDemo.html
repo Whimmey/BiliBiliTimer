@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>基于Ajax获取区间内视频总时长Demo</title>
+    <meta name="description" content="这是一个基于Ajax的Demo，使用方法: 复制以下script标签中的代码到控制台使用，具体可参考ref链接">
+    <!-- <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
+</head>
+
+<body>
+    <script>
+        // 如果报错：Uncaught TypeError: $.ajax is not a function
+        // 表示网页没有jQuery资源，使用下面代码手动添加jQuery
+        let script = document.createElement('script');
+        script.src = 'https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js';
+        document.head.appendChild(script);
+
+        // use Ref: https://www.bilibili.com/read/cv17764897
+        /* 
+        *   使用方法: 复制所有代码，调用getDuration函数
+        *    - bvid: 视频的BV号码，可以从链接里看到
+        *    - start / end: 起止视频号 
+        */
+        getDuration('BV19U4y1V7MV', 1, 2) // 视频合集
+        getDuration('BV14J4114768', 2, 3) // 分集视频（学习视频）
+        getDuration('BV1rM4y1e7XK') // 单个视频
+
+        function getDuration(bvid, start, end) {
+            start = start - 1;
+            end = end - 1;
+            var duration = 0;
+            $.ajax({
+                url: `https://api.bilibili.com/x/web-interface/view?bvid=${bvid}&jsonp=jsonp`, // 防止跨域
+                dataType: 'jsonp',
+                success: function (res) {
+                    if (res.data.pages.length > 1) { // 分集视频 pages长度>1
+                        let videos = res.data.pages;
+                        for (let i = start; i <= end; i++) {
+                            duration += videos[i].duration;
+                        }
+                    } else if (res.data.ugc_season) { // 合集
+                        let videos = res.data.ugc_season.sections[0].episodes;
+                        for (let i = start; i <= end; i++) {
+                            duration += videos[i].page.duration;
+                        }
+                    } else { // 单个视频
+                        duration = res.data.duration;
+                    }
+                }
+            }).then(() => {
+                let res = formatSeconds(duration)
+                console.log(res);
+                return res;
+            })
+        }
+        // 将秒换算成HH:MM:SS
+        function formatSeconds(value) {
+            var second = parseInt(value); // 秒
+            var min = 0; // 分
+            var hour = 0; // 小时
+            if (second >= 60) {
+                min = parseInt(second / 60);
+                second = parseInt(second % 60);
+                if (min >= 60) {
+                    hour = parseInt(min / 60);
+                    min = parseInt(min % 60);
+                }
+            }
+            var result = " "
+            if (second > 0) {
+                result = " " + parseInt(second) + "s";
+            }
+            if (min > 0) {
+                result = " " + parseInt(min) + "min" + result;
+            }
+            if (hour > 0) {
+                result = " " + parseInt(hour) + "h" + result;
+            }
+            return result;
+        }
+
+    </script>
+</body>
+
+</html>
