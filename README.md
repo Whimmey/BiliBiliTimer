@@ -3,7 +3,7 @@
 
 注意：仅可用于**Bilibili视频播放页面-分集视频**(`https://www.bilibili.com/video/*`)
 
-*若要尝试用于**合集视频**，有兴趣可以try one try基于B站API的 **testAjax.html**中的js代码。为了保持插件的轻量化暂未将其引入插件，毕竟绝大多数学习视频属于分集视频。有需求呼声可以new一个issue*
+*若要尝试用于**合集视频**，有兴趣可以try one try**基于B站API的 AjaxDemo.html**。为了保持插件的轻量化暂未将其引入插件，毕竟绝大多数学习视频属于分集视频。有需求呼声可以new一个issue*
 
 - [Bilibili Video Timer](#bilibili-video-timer)
   - [安装](#安装)
@@ -66,7 +66,7 @@
 │  options.js // 相应的js代码
 │  popup.html // 扩展窗口
 │  popup.js // 相应的js代码，绑定了扩展窗口各个组件的事件，以及和content.js通信的代码
-│  testAjax.html // Ajax Demo
+│  AjaxDemo.html // 基于Ajax的Demo，可以实现各种类型的视频时长计算
 │  updates.xml
 ├─build
 │      Bili-extension.crx
