@@ -5,16 +5,27 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>基于Ajax获取区间内视频总时长的demo</title>
+    <title>基于Ajax获取区间内视频总时长-Demo</title>
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 
 <body>
     <script>
-        // use
+        // 如果报错：Uncaught TypeError: $.ajax is not a function
+        // 表示网页没有jQuery资源，使用下面代码手动添加jQuery
+        let script = document.createElement('script');
+        script.src = 'https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js';
+        document.head.appendChild(script);
+
+        // use Ref: https://www.bilibili.com/read/cv17764897
+        /* 
+        *   使用方法: 复制所有代码，调用getDuration函数
+        *    - bvid: 视频的BV号码，可以从链接里看到
+        *    - start / end: 起止视频号 
+        */
         getDuration('BV19U4y1V7MV', 1, 2) // 视频合集
         getDuration('BV14J4114768', 2, 3) // 分集视频（学习视频）
-        getDuration('BV1Vm4y1678o') // 单个视频
+        getDuration('BV1rM4y1e7XK') // 单个视频
 
         function getDuration(bvid, start, end) {
             start = start - 1;
