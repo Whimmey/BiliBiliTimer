@@ -1,9 +1,9 @@
 ## Bilibili Video Timer
 本拓展用于在Bilibili视频播放页面计算分集视频区间内总时长.
 
-注意：仅可用于**Bilibili视频播放页面-分集视频**(`https://www.bilibili.com/video/*`)
+❗ 注意：仅可用于**Bilibili视频播放页面-分集视频**(`https://www.bilibili.com/video/*`)
 
-*若要尝试用于**合集视频**，有兴趣可以try one try**基于B站API的 AjaxDemo.html**。为了保持插件的轻量化暂未将其引入插件，毕竟绝大多数学习视频属于分集视频。有需求呼声可以new一个issue*
+🎈 More：*若要尝试用于**合集视频**，有兴趣可以try one try**基于B站API的 AjaxDemo.html**。为了保持插件的轻量化暂未将其引入插件，毕竟绝大多数学习视频属于分集视频。有需求呼声可以new一个issue*
 
 - [Bilibili Video Timer](#bilibili-video-timer)
   - [安装](#安装)
