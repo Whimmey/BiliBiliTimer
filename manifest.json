@@ -1,6 +1,6 @@
 {
     "name": "Bilibili Video Timer",
-    "version": "2.0.1",
+    "version": "2.0.2",
     "manifest_version": 3,
     "description": "计算分集视频任意区间内的总时长. Calculate the rest time of the videos.",
     "icons": {
