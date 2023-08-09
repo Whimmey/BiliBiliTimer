@@ -106,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Version info
-var manifest = chrome.runtime.getManifest();
-var version = manifest.version;
+let manifest = chrome.runtime.getManifest();
+let version = manifest.version;
 document.getElementById('version').innerHTML = 'v' + version;
 document.getElementById('author').innerHTML = 'by wyy'
