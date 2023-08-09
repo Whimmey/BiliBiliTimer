@@ -5,8 +5,6 @@
 
 🎈 More：*若要尝试用于**合集视频**，有兴趣可以try one try**基于B站API的 `AjaxDemo.html`**。为了保持插件的轻量化暂未将其引入插件，毕竟绝大多数学习视频属于分集视频。有需求呼声可以new一个issue*
 
-<script type="text/javascript" src="http://www.wenjuan.com/iframe/64d387a50d12fe08653477ca/?params=hide_mobile_icon=true"></script>
-
 - [Bilibili Video Timer](#bilibili-video-timer)
   - [安装](#安装)
   - [使用](#使用)
