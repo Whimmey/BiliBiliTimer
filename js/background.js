@@ -57,8 +57,10 @@ chrome.tabs.onActivated.addListener(function (activeInfo) {
         // Set icon dynamically
         if (isMatched) {
             chrome.action.setIcon({ path: "../icons/timeline.png" });
+            chrome.action.enable();
         } else {
             chrome.action.setIcon({ path: "../icons/timeline_grey.png" });
+            chrome.action.disable();
         }
     });
 });
