@@ -41,26 +41,28 @@ chrome.contextMenus.onClicked.addListener(function (info, tab) {
 * 关于动态图标设置
 */
 var manifest = chrome.runtime.getManifest();
-var matches = manifest.content_scripts[0].matches;
+var matches_reg = manifest.content_scripts[0].matches.map(m => m.replace(/\*/g, '.*'));;
 
-chrome.tabs.onActivated.addListener(function (activeInfo) {
-    chrome.tabs.get(activeInfo.tabId, function (tab) {
-        let url = tab.url;
-        let isMatched = false;
-        for (let m of matches) {
-            let regex = new RegExp(m.replace(/\*/g, '.*'));
-            if (regex.test(url)) {
-                isMatched = true;
-                break;
-            }
-        }
-        // Set icon dynamically
-        if (isMatched) {
-            chrome.action.setIcon({ path: "../icons/timeline.png" });
-            chrome.action.enable();
-        } else {
-            chrome.action.setIcon({ path: "../icons/timeline_grey.png" });
-            chrome.action.disable();
-        }
-    });
+chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
+    if (changeInfo.status == 'complete') {
+        tabHandler(tab);
+    }
 });
+chrome.tabs.onActivated.addListener((activeInfo) => {
+    chrome.tabs.get(activeInfo.tabId, tabHandler);
+});
+
+function tabHandler(tab) {
+    let url = tab.url;
+    let isMatched = matches_reg.some(m => new RegExp(m).test(url));
+    console.log('urlMatch:', isMatched, url);
+
+    // Set icon dynamically
+    if (isMatched) {
+        chrome.action.setIcon({ path: "../icons/timeline.png" });
+        chrome.action.enable();
+    } else {
+        chrome.action.setIcon({ path: "../icons/timeline_grey.png" });
+        chrome.action.disable();
+    }
+}
