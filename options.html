@@ -10,29 +10,41 @@
 
 <body>
     <div class="position-absolute top-0 start-50 translate-middle-x mt-3">
-        <div class="card text-center" style="width: 39vh;">
+        <div class="card text-center" style="width: 22vw;">
             <div class="card-body">
                 <h5 class="card-title">⚡ Settings ⚡</h5>
                 <hr>
-                <div class="form-check form-switch text-start">
+                <div class="form-switch text-start">
                     <input class="form-check-input me-4" type="checkbox" id="blockMenuItem">
                     <label class="form-check-label" for="flexSwitchCheckChecked">❌ 关闭右键菜单选项
                     </label>
                 </div>
                 <small class="text-muted"
-                    style="font-size: 6px;">开启后右键菜单便不会显示本拓展选项<br>(修改后插件将在1s内重启，请手动刷新网页以便使用)</small>
+                    style="font-size: 12px;">开启后右键菜单便不会显示本拓展选项<br>(修改后插件将在1s内重启，请手动刷新网页以便使用)</small>
                 <hr>
-                <div class="form-check form-switch text-start">
+                <div class="form-switch text-start">
                     <input class="form-check-input me-4" type="checkbox" id="blockNotification">
                     <label class="form-check-label" for="flexSwitchCheckChecked">❌ 关闭右键菜单通知
                     </label>
                 </div>
-                <small class="text-muted" style="font-size: 6px;">开启后便不会显示Windows通知</small>
+                <small class="text-muted" style="font-size: 12px;">开启后便不会显示Windows通知</small>
                 <hr>
-                <p class="card-text"></p>
+                <div class="input-group">
+                    <span class="input-group-text">默认Marker</span>
+                    <input type="text" class="form-control" id="markerInput" placeholder="输入默认Marker"
+                        aria-label="defaultMarker">
+                </div>
+                <small class="text-muted"
+                    style="font-size: 12px;">设置页面中使用"标记一下"的默认Marker，你也可以在页面中点击Marker快速修改已有Marker</small>
+                <!-- dialog按钮 -->
+                <button type="button" class="btn btn-primary mt-1" id="openModalButton" style="width: 90%;"
+                    data-target="#myModal">
+                    查看所有Marker
+                </button>
+                <hr>
                 <p class="card-text">如果有Bug或者建议, <br>可以去下面的网址吱一声.</p>
                 <p class="card-text text-muted">欢迎关注Github✨.</p>
-                <small class="me-3 fs-6 text-muted"><em style="font-size: 5px;" id="version">v0.1</em></small>
+                <small class="me-3 fs-6 text-muted"><em style="font-size: 15px;" id="version">v0.1</em></small>
                 <a href="https://microsoftedge.microsoft.com/addons/detail/bilibili-video-timer/kjginbekfcfdnfjhnophpcdjoojnfabn"
                     class="card-link" target="_blank">MS Store</a>
                 <a href="https://github.com/Whimmey/BiliBiliTimer" class="card-link" target="_blank">Github</a>
@@ -48,6 +60,51 @@
             <!-- Wenjuan Layer End -->
         </div>
     </div>
+    <!-- Modal Begin -->
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">所有Marker📌 都在这儿了( •̀ ω •́ )y</h5>
+                </div>
+                <div class="modal-body">
+                    <div class="accordion" id="accordionEx">
+                        <!-- <div class="card">
+                            <div class="card-header" id="headingOne">
+                                <h2 class="mb-0">
+                                    <button class="btn btn-link" type="button" data-toggle="collapse"
+                                        data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        Collapsible Group Item #1
+                                    </button>
+                                </h2>
+                            </div>
+
+                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                                data-parent="#accordionEx">
+                                <div class="card-body">
+                                    123123
+                                </div>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+                <div class="modal-footer d-flex">
+                    <button type="button" class="btn btn-danger" id="clearBtn"
+                        style="margin-right:auto">清除勾选视频的所有Marker</button>
+                    <button type="button" class="btn btn-primary" id="saveBtn">保存编辑</button>
+                    <button type="button" class="btn btn-secondary" id="closeBtn">关闭</button>
+                </div>
+                <div class="modal-footer" style="font-size: 12px;">
+                    <p class="card-text">*<mark>清除勾选视频的所有Marker</mark>:
+                        可以<strong>清空勾选的Bvid视频的所有marker</strong>，<strong>谨慎操作噢.</strong>
+                    </p>
+                    <p class="card-text">*<mark>保存编辑</mark>:
+                        可以<strong>直接编辑每个marker的内容</strong>，记得点击<strong>【保存编辑】</strong>.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal End -->
     <script src="./options.js"></script>
 </body>
 

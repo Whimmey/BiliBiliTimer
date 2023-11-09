@@ -1,8 +1,8 @@
 {
     "name": "Bilibili Video Timer",
-    "version": "2.0.2",
+    "version": "2.1.0",
     "manifest_version": 3,
-    "description": "计算分集视频任意区间内的总时长. Calculate the rest time of the videos.",
+    "description": "贴心的学习计划制定助手(●ˇ∀ˇ●)，能够计算分集视频任意区间内的总时长，以及为视频列表项目打上标记✨",
     "icons": {
         "16": "icons/timeline.png"
     },
@@ -31,18 +31,6 @@
     "options_page": "options.html",
     "background": {
         "service_worker": "js/background.js"
-    },
-    "//": {
-        "note": "JSON does not support comments, so this field is used to add comments.",
-        "permissions": [
-            "https://*/*",
-            "http://*/*",
-            "contextMenu右键菜单",
-            "storage本地存储粘贴板操作"
-        ],
-        "matches": [
-            "*://*/*"
-        ]
     },
     "update_url": "https://raw.githubusercontent.com/Whimmey/BiliBiliTimer/main/updates.xml",
     "author": "Whimmey"

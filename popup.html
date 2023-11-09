@@ -16,7 +16,7 @@
 <body>
     <div class="card">
         <div class="card-header bg-gradient-light">
-            BiliBili Video Timer<small class="position-absolute end-0 me-3 fs-6 text-muted"><em style="font-size: 5px;"
+            BiliBili Video Timer<small class="position-absolute end-0 me-3 fs-6 text-muted"><em style="font-size: 12px;"
                     id="version">0.1</em></small>
         </div>
         <div class="card-body py-3">
@@ -40,13 +40,15 @@
                 <input id="showtime" class="form-control border border-primary" type="text"
                     placeholder="合计时长显示在这里(￣▽￣)\" readonly>
             </div>
-            <label for="prgs" id="prgs_info" class="text-muted fs-6" style="font-size: 10px !important;">当前进度...</label>
+            <label for="prgs" id="prgs_info" class="text-muted fs-6 mb-1" style="font-size: 12px !important;">当前进度...
+                <!-- <span class="badge bg-primary bg-opacity-75" style="font-size:11px">10.00%</span> -->
+            </label>
             <div class="progress" style="height: 6px;">
                 <div id="prgs" class="progress-bar progress-bar-striped progress-bar-animated bg" role="progressbar"
                     aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
             </div>
         </div>
-        <div class="card-footer text-muted user-select-none font-weight-light py-1" style="font-size: 6px !important;">
+        <div class="card-footer text-muted user-select-none font-weight-light py-1" style="font-size: 10px;">
             目前只能在Bilibili分集视频播放页使用 <em class="position-absolute end-0 me-3" id="author"></em>
         </div>
     </div>

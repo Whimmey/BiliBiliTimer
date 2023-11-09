@@ -31,9 +31,9 @@ chrome.tabs.query({ active: true, currentWindow: true }, tabs => {
         let width = res[1]
         progress.style.width = `${width}%`
         progress.setAttribute('aria-valuenow', width)
-        document.getElementById('prgs_info').innerHTML = `当前进度... <span class="badge bg-primary bg-opacity-75">${width}%</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;集数进度... <span class="badge bg-success bg-opacity-75">${p == 0 ? 1 : p}/${length}</span>`
+        document.getElementById('prgs_info').innerHTML = `当前进度... <span class="badge bg-primary bg-opacity-75" style="font-size:11px">${width}%</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;集数进度... <span class="badge bg-success bg-opacity-75" style="font-size:11px">${p == 0 ? 1 : p}/${length}</span>`
         // 字符串中的空格用&nbsp;代替
-    }).catch(err => { console.error(err) })
+    })
 });
 
 // 绑定range的input事件
