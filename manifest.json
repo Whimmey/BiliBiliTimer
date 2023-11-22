@@ -1,8 +1,8 @@
 {
-    "name": "Bilibili Video Timer",
-    "version": "2.1.0",
+    "name": "B站学习助手 Bilibili Video Timer",
+    "version": "2.1.1",
     "manifest_version": 3,
-    "description": "贴心的学习计划制定助手(●ˇ∀ˇ●)，能够计算分集视频任意区间内的总时长，以及为视频列表项目打上标记✨",
+    "description": "贴心的学习计划制定助手(●ˇ∀ˇ●)，能够计算分集视频任意区间内的总时长和总览进度，以及为视频列表项目打上你的标记✨",
     "icons": {
         "16": "icons/timeline.png"
     },
