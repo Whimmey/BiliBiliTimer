@@ -60,6 +60,12 @@ chrome.tabs.onActivated.addListener((activeInfo) => {
     chrome.tabs.get(activeInfo.tabId, tabHandler);
 });
 
+chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
+    if (changeInfo.status == 'complete') {
+        tabHandler(tab);
+    }
+});
+
 function tabHandler(tab) {
     let url = tab.url;
     let isMatched = matches_reg.some(m => new RegExp(m).test(url));
