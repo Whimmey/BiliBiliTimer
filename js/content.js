@@ -79,7 +79,9 @@ function saveAndUpdateMark(p, bvid, marker) {
 function insertMarker(p_mark, bvid, readMarker = null) { // 视频集号，视频bvid，准备插入的marker
     let videoli = document.querySelector('.list-box')
     let targetItem = videoli.children[p_mark - 1].querySelector('.clickitem')
-    if (targetItem.previousElementSibling) return; // 判断是否已经插入过标记
+    // let targetItem = videoli.children[p_mark - 1] // <a>标签
+    // 判断是否已经插入过标记 previousElementSibling: 返回当前元素的前一个兄弟元素
+    if (targetItem.previousElementSibling) return;
     // 在targetItem前插入标记
     let markerSpan = document.createElement('span')
     if (readMarker) markerSpan.innerText = readMarker;
@@ -92,12 +94,15 @@ function insertMarker(p_mark, bvid, readMarker = null) { // 视频集号，视�
         });
     }
     markerSpan.style.marginRight = '5px'
+    // markerSpan.style.float = 'left'
     // 给span绑定click事件，供用户自定义要插入的标记
     markerSpan.addEventListener('click', function (e) {
         // 弹出框供用户自定义要插入的标记
         this.innerText = prompt('请输入要插入的标记：', this.innerText)
         // 修改本地存储的网页新增的marker
         saveAndUpdateMark(p_mark, bvid, this.innerText)
+        e.stopPropagation()  // 阻止事件冒泡
+        e.preventDefault() // 阻止默认事件。阻止2.1.1版本点击span时，视频播放选中样式会跳转到被点击视频集号的问题
     })
     targetItem.insertAdjacentElement('beforebegin', markerSpan)
 }
