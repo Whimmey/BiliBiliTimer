@@ -71,15 +71,17 @@ document.getElementById('openModalButton').addEventListener('click', function ()
         let checkedBvids = document.querySelectorAll('.checkBvid:checked');
         if (checkedBvids.length == 0) return;
         if (confirm('确认清空选中视频的所有标记？')) {
+            console.log(checkedBvids);
             chrome.storage.sync.get('BiliTimer_marker', function (data) {
                 let markers = data.BiliTimer_marker;
                 for (let node of checkedBvids) {
                     let bvid = node.value;
+                    console.log('Clear marker of ' + bvid + ' in ' + markers);
                     delete markers[bvid];
                 }
                 chrome.storage.sync.set({ BiliTimer_marker: markers });
+                showMarkerList();
             });
-            showMarkerList();
         }
     });
 
