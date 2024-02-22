@@ -39,10 +39,20 @@
 - ❗ 右键菜单功能，在视频选集区域 **鼠标右键**-**计算到此时长**，随后点击扩展图标即**自动填入**目标视频序号. <font color=teal>**默认开启**此功能，**默认获取到目标视频序号后会有通知**，均可在`扩展管理界面`中关闭.</font>
 - ❗ 视频选集标记功能，在视频选集区域 **鼠标右键**-**标记一下**，即可在**对应选集前方添加marker标记**（**即使刷新页面也不会消失**( •̀ ω •́ )✧）. marker默认样式为：✨，若想修改marker可以**点击刚刚添加好的marker**，即可修改其内容. **marker默认样式可以在`扩展选项`中修改**. （如何进入`扩展选项`：右键本拓展工具图标，点击`扩展选项`即可）`扩展选项`中也**存放了所有标记过的marker**，进入页面后点击`查看所有Marker`即可对所有Marker进行**修改**或**清除操作**.
 
-右键菜单新功能演示：<br>
-<img src='https://github.com/Whimmey/BiliBiliTimer/blob/main/img/show.gif' style="width:60%;margin:10px 0"> 
+#### 右键菜单-关于视频选集标记功能
 
-#### 关于右键计算到此时长菜单
+**视频选集标记功能演示**：<br>
+
+<img src='https://github.com/Whimmey/BiliBiliTimer/blob/main/img/editable_mark.gif' style="width:60%;margin:10px 0"> 
+
+#### 右键菜单-关于右键计算到此时长
+
+**计算到此时长功能演示**：<br>
+
+<img src='https://github.com/Whimmey/BiliBiliTimer/blob/main/img/quick_cal.gif' style="width:60%;margin:10px 0"> 
+
+[背景视频：BV1gM411W7ex]
+
 - 为什么不能实现整个自动化？<br>
 右键功能是在`background.js`中实现，<span style="color:lightblue">**`popup`的生命周期是在用户点击图标后方才启动。**</span>可能是处于安全考虑，浏览器没有提供可以唤醒`popup`的接口(这是我查阅文档得出的结论)。因此依然需要用户手动点击扩展图标，使得`popup`弹出，才能自动填入目标视频序号. 随后右键的视频序号销毁.
 - 如何关闭此功能？<br>
