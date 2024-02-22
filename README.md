@@ -43,7 +43,7 @@
 
 **视频选集标记功能演示**：<br>
 
-<img src='https://github.com/Whimmey/BiliBiliTimer/blob/main/img/editable_mark.gif' style="width:60%;margin:10px 0"> 
+<img src='https://github.com/Whimmey/BiliBiliTimer/blob/main/img/editable_mark.gif' style="width:80%;margin:10px 0"> 
 
 #### 右键菜单-关于右键计算到此时长
 
