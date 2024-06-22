@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>PopUp</title>
+    <!-- <meta http-equiv="Content-Security-Policy" content="script-src 'self' https://api.bilibili.com"> -->
     <script src="./js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="./css/bootstrap.min.css">
     <style>
@@ -33,8 +34,8 @@
             <div class="input-group input-group-sm mb-3">
                 <button id="btn-cal" class="btn btn-outline-danger rounded-pill" type="button"
                     style="width: 47%;">计算</button>
-                <button id="btn-del" class="btn btn-outline-warning position-absolute end-0 rounded-pill" type="button"
-                    style="width: 47%;">清除</button>
+                <button id="btn-back" class="btn btn-outline-warning position-absolute end-0 rounded-pill" type="button"
+                    style="width: 47%;">还原</button>
             </div>
             <div class="input-group-m mb-1">
                 <input id="showtime" class="form-control border border-primary" type="text"
@@ -49,7 +50,7 @@
             </div>
         </div>
         <div class="card-footer text-muted user-select-none font-weight-light py-1" style="font-size: 10px;">
-            目前只能在Bilibili分集视频播放页使用 <em class="position-absolute end-0 me-3" id="author"></em>
+            在Bilibili分集视频/合集视频播放页均能使用 <em class="position-absolute end-0 me-3" id="author"></em>
         </div>
     </div>
     <script src="popup.js"></script>

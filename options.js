@@ -9,7 +9,7 @@ let markerInput = document.getElementById('markerInput');
 
 // 获取blockNotification的值
 chrome.storage.sync.get('blockNotification', function (data) {
-    let blockNotification = data.blockNotification;
+    let blockNotification = data.blockNotification ? data.blockNotification : true;
     // 如果showNotification为true，则将开关打开
     if (blockNotification) {
         notificationToggle.checked = true;

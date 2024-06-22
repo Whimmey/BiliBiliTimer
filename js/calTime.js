@@ -1,35 +1,63 @@
-function calTime(start, end) {
-    var lis = document.querySelectorAll('.list-box .duration');
-    //NodeList 不是一个数组，是一个类似数组的对象 (Like Array Object)。
-    // 虽然 NodeList 不是一个数组，但是可以使用 forEach()来迭代。
-
-    var time_h = 0; // 时
-    var time_m = 0; // 分
-    var time_s = 0; // 秒
-
-    lis.forEach((currentValue, index) => {
-        if (index >= start - 1 && index <= end - 1) {
-            let time = currentValue.innerText;
-            // 操作string类型的时长信息
-            let timeArr = time.split(':')
-            if (timeArr.length == 3) { //分集时长显示包含小时的情况
-                time_h += Number(timeArr[0])
-                time_m += Number(timeArr[1]);
-                time_s += Number(timeArr[2]);
-            } else {
-                time_m += Number(timeArr[0]);
-                time_s += Number(timeArr[1]);
-            }
-        }
-    })
-    // 得到总时长mm:ss格式
-    time_m = time_m + parseInt(time_s / 60)
-    time_s = time_s % 60
-    // 计算小时
-    time_h += parseInt(time_m / 60)
-    time_m = time_m % 60
-    console.log(`从p${start}到p${end} 总时长为${time_h}h ${time_m}min ${time_s}s`);
-    let arr_time = [time_h, time_m, time_s];
-    return arr_time;
+// 获取视频信息 - API
+async function getVideoInfo(bvid) {
+    const response = await fetch(`https://api.bilibili.com/x/web-interface/view?bvid=${bvid}&jsonp=jsonp`)
+    if (!response.ok) {
+        throw new Error('Bilibili video Timer - Network response was not ok')
+    }
+    const { data } = await response.json();
+    let vtype = 1; // 1: 单个视频; 2: 分集视频; 3: 合集视频
+    if (data.pages.length > 1) {
+        vtype = 2;
+    } else if (data.ugc_season) {
+        vtype = 3;
+    }
+    return { vtype, data };
 }
+
+// 获取视频时长
+async function getDuration(bvid, start, end, section_idx = 0) {
+    start = start - 1;
+    end = end - 1;
+    let duration = 0;
+
+    const response = await fetch(`https://api.bilibili.com/x/web-interface/view?bvid=${bvid}&jsonp=jsonp`)
+    if (!response.ok) {
+        throw new Error('Bilibili video Timer - Network response was not ok')
+    }
+    const { data } = await response.json();
+    console.log('content index allData', data)
+
+    if (data.pages.length > 1) { // 分集视频 pages长度>1
+        let videos = data.pages;
+        for (let i = start; i <= end; i++) {
+            duration += videos[i].duration;
+        }
+    } else if (data.ugc_season) { // 合集
+        let videos = data.ugc_season.sections[section_idx].episodes;
+        for (let i = start; i <= end; i++) {
+            duration += videos[i].page.duration;
+        }
+    } else { // 单个视频
+        duration = data.duration;
+    }
+
+    return formatSeconds(duration);
+}
+
+// 将秒换算成HH:MM:SS
+function formatSeconds(value) {
+    var second = parseInt(value); // 秒
+    var min = 0; // 分
+    var hour = 0; // 小时
+    if (second >= 60) {
+        min = parseInt(second / 60);
+        second = parseInt(second % 60);
+        if (min >= 60) {
+            hour = parseInt(min / 60);
+            min = parseInt(min % 60);
+        }
+    }
+    return [hour, min, second];
+}
+
 console.log('Bilibili video Timer - calTime.js loaded!!!');

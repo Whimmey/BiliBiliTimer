@@ -1,6 +1,6 @@
 {
-    "name": "B站学习助手 Bilibili Video Timer",
-    "version": "2.1.1",
+    "name": "B站学习助手 - Bilibili Video Timer",
+    "version": "3.0",
     "manifest_version": 3,
     "description": "贴心的学习计划制定助手(●ˇ∀ˇ●)，能够计算分集视频任意区间内的总时长和总览进度，以及为视频列表项目打上你的标记✨",
     "icons": {
@@ -15,18 +15,23 @@
         "tabs",
         "contextMenus",
         "storage",
-        "notifications"
+        "notifications",
+        "*://api.bilibili.com/*"
     ],
     "content_scripts": [
         {
             "matches": [
-                "https://www.bilibili.com/video/*"
+                "https://www.bilibili.com/video/*",
+                "https://api.bilibili.com/*"
             ],
             "js": [
                 "./js/content.js",
                 "./js/calTime.js"
             ]
         }
+    ],
+    "host_permissions": [
+        "*://api.bilibili.com/*"
     ],
     "options_page": "options.html",
     "background": {

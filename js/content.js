@@ -18,26 +18,40 @@ window.onload = function () {
 //监听扩展程序进程或内容脚本发送的请求
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     switch (request.action) {
-        case "GetLengthandProgress":
-            const len = document.querySelectorAll('.list-box .duration').length // 视频总集数
-            if (request.p_now == null || request.p_now <= 1) {
-                sendResponse([len, 0]);
-            } else {
-                let done = calTime(1, request.p_now - 1)// [time_h, time_m, time_s]
-                let total = calTime(1, len)
-                // 将时间转换为秒
-                let done_s = done[0] * 3600 + done[1] * 60 + done[2]
-                let total_s = total[0] * 3600 + total[1] * 60 + total[2]
-                // 计算进度条的宽度
-                let width = done_s / total_s * 100
-                console.log('Bilibili video Timer - progress now:', width);
-                sendResponse([len, width.toFixed(2)])
-            }
-            break;
+        case "GetProgress":
+            (async () => {
+                if (request.p_now == null || request.p_now <= 1) {
+                    sendResponse(0);
+                } else {
+                    const done = await getDuration(request.bvid, 1, request.p_now - 1, request.section_idx)
+                    const total = await getDuration(request.bvid, 1, request.len, request.section_idx)
+                    // return [time_h, time_m, time_s]
+                    // 将时间转换为秒
+                    const done_s = done[0] * 3600 + done[1] * 60 + done[2]
+                    const total_s = total[0] * 3600 + total[1] * 60 + total[2]
+                    // 计算进度条的宽度
+                    const width = done_s / total_s * 100
+                    console.log('Bilibili video Timer - progress now:', width);
+                    sendResponse(width.toFixed(2))
+                }
+            })();
+            return true;
+        case "GetVideoInfo":
+            (async () => {
+                const res = await getVideoInfo(request.bvid)
+                console.log('Bilibili video Timer - video info received:', res);
+                sendResponse(res);
+            })();
+            return true;
         case "GetDuration":
-            let res = calTime(request.p1, request.p2)
-            sendResponse(res);
-            break;
+            //! async+闭包
+            // ref: https://stackoverflow.com/questions/53024819/sendresponse-not-waiting-for-async-function-or-promises-resolve
+            (async () => {
+                const res = await getDuration(request.bvid, request.p1, request.p2, request.section_idx)
+                console.log('Bilibili video Timer - data received:', res);
+                sendResponse(res);
+            })();
+            return true; //! 保持消息通道打开，直到sendResponse被调用；否则，sendResponse可能会在异步代码执行之前被调用
         case "InsertMarker": // p_mark: 要插入标记的视频集号; bvid: 视频的bvid
             insertMarker(request.p_mark, request.bvid)
             sendResponse('InsertMarker done!')
@@ -51,7 +65,7 @@ function saveAndUpdateMark(p, bvid, marker) {
     // 修改本地存储的marker
     chrome.storage.sync.get('BiliTimer_marker', function (data) {
         // 数据的结构为：{bvid:map({p:1, marker:'✨'}, {p:2, marker:'✨'})}
-        let markers = data.BiliTimer_marker;
+        let markers = data.BiliTimer_marker ? data.BiliTimer_marker : {};
         // 将markers被存储的结构转换为可被使用的结构
         for (let [key, value] of Object.entries(markers)) {
             if (value instanceof Array) markers[key] = new Map(value)

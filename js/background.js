@@ -12,7 +12,7 @@ chrome.contextMenus.create({
 * 关于创建右键菜单
 */
 chrome.storage.sync.get('blockMenuItem', function (data) {
-    let blockMenuItem = data.blockMenuItem;
+    const blockMenuItem = data.blockMenuItem;
     if (!blockMenuItem) {
         chrome.contextMenus.create({
             id: 'QuickCopy',
