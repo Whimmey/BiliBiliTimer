@@ -1,9 +1,13 @@
 ## Bilibili Video Timer
 本拓展用于在Bilibili视频播放页面计算分集/合集视频区间内总时长和分集视频标记. 
 
-🍟 **欢迎大家在拓展选项页的`反馈`中提出建议和bug(v2.0.2+可用)**
+🍟 **欢迎大家在Github/Issues或拓展选项页的`反馈`中提出建议和bug(v2.0.2+可用)**
 
 ❗ 注意：**v3.0.0+**版本支持**Bilibili视频播放页面-分集视频、合集视频**(`https://www.bilibili.com/video/*`)
+
+❗ ❗ 由于B站修改了页面元素，**因此v2.1.1及以前版本出现无法使用的情况**，解决方法参见：<a href="https://github.com/Whimmey/BiliBiliTimer/issues/9#issuecomment-2425410003" target="_blank">Issues#9</a> 
+
+<hr>
 
 - [Bilibili Video Timer](#bilibili-video-timer)
   - [安装](#安装)
