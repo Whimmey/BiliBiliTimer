@@ -1,0 +1,3 @@
+const classes = {
+    'playList': 'playlist',
+}
