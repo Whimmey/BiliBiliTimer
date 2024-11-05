@@ -1,3 +1,0 @@
-const classes = {
-    'playList': 'playlist',
-}
