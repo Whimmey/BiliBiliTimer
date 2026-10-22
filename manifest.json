@@ -15,8 +15,7 @@
         "tabs",
         "contextMenus",
         "storage",
-        "notifications",
-        "*://api.bilibili.com/*"
+        "notifications"
     ],
     "content_scripts": [
         {
@@ -25,13 +24,21 @@
                 "https://api.bilibili.com/*"
             ],
             "js": [
+                "./js/video.js",
                 "./js/content.js",
-                "./js/calTime.js"
+                "./js/calTime.js",
+                "./js/floating.js"
             ]
         }
     ],
     "host_permissions": [
         "*://api.bilibili.com/*"
+    ],
+    "web_accessible_resources": [
+        {
+            "resources": ["popup.html"],
+            "matches": ["https://www.bilibili.com/*"]
+        }
     ],
     "options_page": "options.html",
     "background": {

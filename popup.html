@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <title>PopUp</title>
     <!-- <meta http-equiv="Content-Security-Policy" content="script-src 'self' https://api.bilibili.com"> -->
-    <script src="./js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="./css/bootstrap.min.css">
     <style>
         body {
@@ -21,15 +20,16 @@
                     id="version">0.1</em></small>
         </div>
         <div class="card-body py-3">
+            <p id="mode-info" class="text-muted mb-2" style="font-size: 12px;">默认计算当前位置到最后一集；修改集数后计算完整区间。</p>
             <div class="input-group input-group-sm mb-2">
-                <label for="p_start" class="input-group-text">From</label>
-                <input id="p_start" type="text" class="form-control" placeholder="视频序号" aria-label="Username">
-                <label for="p_end" class="input-group-text">to</label>
-                <input id="p_end" type="text" class="form-control" placeholder="视频序号" aria-label="Server">
+                <label for="p_start" class="input-group-text">从</label>
+                <input id="p_start" type="number" min="1" step="1" class="form-control" placeholder="起始集" aria-label="起始集">
+                <label for="p_end" class="input-group-text">到</label>
+                <input id="p_end" type="number" min="1" step="1" class="form-control" placeholder="结束集" aria-label="结束集">
             </div>
-            <div class="input-group input-group-sm mb-2">
-                <label for="customRange2" class="text-muted fs-6" style="font-size: 12px !important;">滑动选择...</label>
-                <input type="range" class="custom-range d-block w-100" min="1" max="10" id="customRange2">
+            <div class="mb-2">
+                <label for="endRange" id="rangeLabel" class="text-muted fs-6" style="font-size: 12px !important;">滑动选择结束集</label>
+                <input type="range" class="form-range d-block w-100" min="1" max="10" id="endRange" aria-label="结束集">
             </div>
             <div class="input-group input-group-sm mb-3">
                 <button id="btn-cal" class="btn btn-outline-danger rounded-pill" type="button"
@@ -39,7 +39,7 @@
             </div>
             <div class="input-group-m mb-1">
                 <input id="showtime" class="form-control border border-primary" type="text"
-                    placeholder="合计时长显示在这里(￣▽￣)\" readonly>
+                    placeholder="正在读取播放进度" aria-label="计算结果" aria-live="polite" readonly>
             </div>
             <label for="prgs" id="prgs_info" class="text-muted fs-6 mb-1" style="font-size: 12px !important;">当前进度...
                 <!-- <span class="badge bg-primary bg-opacity-75" style="font-size:11px">10.00%</span> -->
@@ -53,6 +53,7 @@
             在Bilibili分集视频/合集视频播放页均能使用 <em class="position-absolute end-0 me-3" id="author"></em>
         </div>
     </div>
+    <script src="js/video.js"></script>
     <script src="popup.js"></script>
 </body>
 
